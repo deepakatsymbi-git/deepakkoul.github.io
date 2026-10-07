@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak Koul – Supply Chain Transformation SME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1c2e;
+      --navy2: #162236;
+      --accent: #3b82f6;
+      --accent2: #1d4ed8;
+      --teal: #0ea5e9;
+      --light: #f1f5f9;
+      --muted: #94a3b8;
+      --white: #ffffff;
+      --card-bg: #1a2d45;
+      --border: rgba(255,255,255,0.08);
+      --tag-bg: rgba(59,130,246,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,28,46,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo { font-weight: 700; font-size: 1rem; letter-spacing: 0.02em; color: var(--white); }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f1c2e 0%, #162a48 50%, #0f1c2e 100%);
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.12), transparent);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--tag-bg); border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent); font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 1.25rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, #93c5fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--teal); font-weight: 600; margin-bottom: 1.25rem;
+    }
+    .hero-desc {
+      max-width: 700px; margin: 0 auto 2.5rem;
+      color: #94a3b8; font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    .hero-cta {
+      display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      padding: 0.7rem 1.6rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.3); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: #fff; }
+
+    /* ── STATS ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat {
+      background: var(--navy2);
+      padding: 1.5rem 1rem; text-align: center;
+    }
+    .stat-val {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.3; }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(59,130,246,0.4), transparent);
+    }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .section-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+
+    /* ── PROJECT GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 700px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: border-color .25s, transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+      opacity: 0; transition: opacity .25s;
+    }
+    .project-card:hover {
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-num {
+      min-width: 36px; height: 36px;
+      background: var(--tag-bg); border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 8px; display: grid; place-items: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--accent);
+    }
+    .project-client {
+      font-size: 0.7rem; color: var(--teal); font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .project-title {
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;
+    }
+    .project-scope {
+      font-size: 0.82rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.5;
+    }
+    .outcomes {
+      border-top: 1px solid var(--border);
+      padding-top: 0.85rem;
+    }
+    .outcomes-label {
+      font-size: 0.68rem; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .outcome-item {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.35rem; line-height: 1.4;
+    }
+    .outcome-dot {
+      min-width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); margin-top: 5px;
+    }
+    .outcome-highlight { color: #60a5fa; font-weight: 600; }
+
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem;
+    }
+    .tag {
+      font-size: 0.68rem; font-weight: 500;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8; padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+
+    /* ── TECH SECTION ── */
+    .tech-section { background: var(--navy2); }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .tech-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.1rem;
+    }
+    .tech-category {
+      font-size: 0.7rem; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .tech-items { font-size: 0.8rem; color: #94a3b8; line-height: 1.7; }
+    .tech-items span { color: #cbd5e1; font-weight: 500; }
+
+    /* ── CONTACT ── */
+    .contact-section { text-align: center; }
+    .contact-grid {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: center; margin-top: 2rem;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.85rem 1.25rem;
+      font-size: 0.875rem; color: var(--muted);
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .contact-item:hover { border-color: var(--accent); color: var(--white); }
+    .contact-icon { font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem; color: var(--muted);
+    }
+
+    /* ── INDUSTRIES ── */
+    .pill-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+    }
+    .pill {
+      font-size: 0.78rem; font-weight: 500;
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      background: var(--tag-bg); border: 1px solid rgba(59,130,246,0.25);
+      color: #93c5fd;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Deepak <span>Kaul</span></div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#tech">Tech</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Open to Opportunities · Pune, India</div>
+  <h1>Deepak Koul</h1>
+  <p class="hero-sub">Supply Chain Transformation SME &amp; IT Business Partner</p>
+  <p class="hero-desc">
+    I help manufacturing, automotive, logistics, consumer goods and 3PL companies run their supply chains on better technology — from business case to go-live. 17 years across ERP, warehouse, transport and planning systems.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-val">$15M+</div><div class="stat-label">Total Documented<br>Business Value</div></div>
+  <div class="stat"><div class="stat-val">$3M/yr</div><div class="stat-label">SC Cost Savings<br>(Infosys)</div></div>
+  <div class="stat"><div class="stat-val">25%</div><div class="stat-label">FTE Effort Reduced<br>(Cummins)</div></div>
+  <div class="stat"><div class="stat-val">$12M+</div><div class="stat-label">Inventory Savings<br>(Infosys)</div></div>
+  <div class="stat"><div class="stat-val">$865K+</div><div class="stat-label">SC Cost Savings<br>(Cummins)</div></div>
+  <div class="stat"><div class="stat-val">17 yrs</div><div class="stat-label">Global Experience<br>Across Industries</div></div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Selected Work</div>
+    <h2>Project Highlights</h2>
+    <p class="section-desc">Client engagement documents are under NDA; samples available on request.</p>
+
+    <div class="projects-grid">
+
+      <!-- 1 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Cummins India · Automotive &amp; Manufacturing</div>
+          </div>
+          <div class="project-num">01</div>
+        </div>
+        <div class="project-title">Procurement Spend Analytics Automation</div>
+        <p class="project-scope">Moved spend reporting from manual Excel to Azure Data Lake with Power BI dashboards that refresh automatically — giving procurement leadership real-time cross-BU visibility.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">25% less FTE effort</span> on reporting</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Real-time spend visibility across business units</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">Break-even within 6 months</span> of go-live</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">Azure Data Lake</span><span class="tag">Power BI</span><span class="tag">Analytics</span><span class="tag">Procurement</span></div>
+      </div>
+
+      <!-- 2 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Cummins India · Automotive &amp; Manufacturing</div>
+          </div>
+          <div class="project-num">02</div>
+        </div>
+        <div class="project-title">SaaS Transportation Management System Rollout</div>
+        <p class="project-scope">Led multi-site TMS rollout covering fleet visibility, automated freight audit, invoice reconciliation, route optimization and PTL-to-FTL conversion.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">40% better</span> transport visibility</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">50% reduction</span> in invoice reconciliation effort</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">$65K/yr saved</span> via route optimization &amp; PTL-to-FTL</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">TMS</span><span class="tag">Route Optimization</span><span class="tag">Freight Audit</span><span class="tag">SaaS</span></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Cummins India · Multi-Plant Manufacturing</div>
+          </div>
+          <div class="project-num">03</div>
+        </div>
+        <div class="project-title">RFID Truck Tracking &amp; Yard Control</div>
+        <p class="project-scope">Designed and implemented RFID-based truck tracking across a multi-plant site, with real-time yard control to coordinate transport planning and reduce congestion.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">$800K+/yr savings</span> target (avg yearly demurrage cost)</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Real-time truck and yard visibility for planners</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Less yard congestion and fewer transporter delays</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">RFID</span><span class="tag">IoT</span><span class="tag">Yard Management</span><span class="tag">Transport</span></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Cummins India · Countdown NZ · Toll Group</div>
+          </div>
+          <div class="project-num">04</div>
+        </div>
+        <div class="project-title">Blue Yonder WMS: Greenfield &amp; Brownfield Go-Lives</div>
+        <p class="project-scope">Built new BY WMS for Cummins' $265M aftermarket logistics centre; migrated a live Countdown retail warehouse to Blue Yonder with zero service disruption — both integrated with Oracle ERP and TMS.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>On-time Cummins go-live, JIT manufacturing ready Day 1</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">Record 5-month</span> zero-disruption Countdown deployment</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Clean inventory migration with full ERP &amp; TMS integration</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">Blue Yonder WMS</span><span class="tag">Oracle ERP</span><span class="tag">3PL</span><span class="tag">Retail</span></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Toll Group · APAC (3PL &amp; Freight Forwarding)</div>
+          </div>
+          <div class="project-num">05</div>
+        </div>
+        <div class="project-title">3PL Architecture &amp; WMS Global Template</div>
+        <p class="project-scope">Defined requirements and cloud-first API architecture across WMS, freight forwarding and integration platforms. Presented to the ASRB. Led IT demerger &amp; TSA for an AUD 6.5M business separation.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">$100K avoided</span> by reusing existing architecture</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Cloud-first API blueprint adopted across APAC</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>Plug-and-play deployment model for faster rollouts</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">CargoWise</span><span class="tag">Blue Yonder WMS</span><span class="tag">Solution Architecture</span><span class="tag">TOGAF</span></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-client">Infosys Consulting · Syngenta (Global)</div>
+          </div>
+          <div class="project-num">06</div>
+        </div>
+        <div class="project-title">Global Oracle ERP &amp; Supply Chain Standardization</div>
+        <p class="project-scope">Led Oracle EBS rollouts across Pan-Europe and Asia. Defined a standard SAP-to-3PL warehouse interface across ~250 warehouses in LATAM, NAFTA, EAME and APAC. Led $0.4B Turkey compliance risk containment.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">$12M+ savings</span> through global inventory pooling</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">$3M/yr</span> from SAP-to-3PL integration</span></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><span>96-country TIER trade-compliance database delivered</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">Oracle EBS</span><span class="tag">SAP SCM</span><span class="tag">EDI</span><span class="tag">EXIM Compliance</span></div>
+      </div>
+
+      <!-- 7 -->
+      <div class="project-card" style="grid-column: 1 / -1;">
+        <div class="project-header">
+          <div>
+            <div class="project-client">One Network Enterprises (a Blue Yonder Co.) · Europe &amp; APAC</div>
+          </div>
+          <div class="project-num">07</div>
+        </div>
+        <div class="project-title">Integrated Business Planning &amp; AI-Driven Control Tower</div>
+        <p class="project-scope">Led customer-facing solution architecture for multi-million-dollar IBP and control tower programs on the One Network platform. Led functional design for CPFR for a world-leading tobacco brand across retail and manufacturing networks.</p>
+        <div class="outcomes">
+          <div class="outcomes-label">Key Outcomes</div>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 0.35rem;">
+            <div class="outcome-item"><div class="outcome-dot"></div><span>Longer planning horizons &amp; better forecast accuracy</span></div>
+            <div class="outcome-item"><div class="outcome-dot"></div><span><span class="outcome-highlight">AI-driven control tower</span> across multi-tier partners</span></div>
+            <div class="outcome-item"><div class="outcome-dot"></div><span>Collaborative replenishment cut costs across extended networks</span></div>
+            <div class="outcome-item"><div class="outcome-dot"></div><span>Capability gaps fed directly into product roadmap</span></div>
+          </div>
+        </div>
+        <div class="project-tags"><span class="tag">One Network</span><span class="tag">Blue Yonder IBP</span><span class="tag">Control Tower</span><span class="tag">CPFR</span><span class="tag">AI/ML</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech" class="tech-section">
+  <div class="container">
+    <div class="section-label">Technology</div>
+    <h2>Platforms &amp; Tools</h2>
+    <p class="section-desc">17 years across enterprise platforms, cloud, data and emerging tech.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-category">Supply Chain Platforms</div>
+        <div class="tech-items"><span>Blue Yonder WMS / TMS / IBP</span> · <span>One Network RTVN</span> · <span>Oracle EBS R12</span> · <span>SAP SCM</span> · <span>Pando TMS</span> · <span>CargoWise FMS</span> · <span>Project44</span></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-category">Cloud, Data &amp; Analytics</div>
+        <div class="tech-items"><span>Microsoft Azure</span> · <span>Snowflake</span> · <span>Power BI</span> · <span>Tableau</span> · <span>AWS (Certified)</span> · <span>RFID &amp; IoT</span></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-category">Architecture &amp; Governance</div>
+        <div class="tech-items"><span>TOGAF 9.2</span> · <span>LeanIX</span> · <span>ITIL</span> · <span>Solution Architecture Review (ASRB)</span> · <span>Vendor Selection &amp; SLA</span> · <span>TSA &amp; Demerger Governance</span></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-category">AI, Automation &amp; Emerging</div>
+        <div class="tech-items"><span>AI-driven SC Control Towers</span> · <span>GenAI Product Strategy</span> · <span>Industry 4.0</span> · <span>MES / WCS / ASRS / Robotics</span> · <span>Low-code Platforms</span></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-category">Industries Served</div>
+        <div class="pill-row">
+          <span class="pill">Automotive</span>
+          <span class="pill">3PL &amp; Freight</span>
+          <span class="pill">Retail</span>
+          <span class="pill">Hi-Tech</span>
+          <span class="pill">Agri-Business</span>
+          <span class="pill">Manufacturing</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-category">Delivery &amp; Program Tools</div>
+        <div class="tech-items"><span>JIRA</span> · <span>MS Project</span> · <span>Agile &amp; Waterfall</span> · <span>Multi-BU PMO Governance</span> · <span>Change Management</span> · <span>Stakeholder Engagement</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Get in Touch</div>
+    <h2>Let's Work Together</h2>
+    <p class="section-desc">Open to consulting engagements and full-time roles in supply chain transformation, IT leadership and digital programs.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="tel:+917006323227"><span class="contact-icon">📞</span> +91-70063 23227</a>
+      <a class="contact-item" href="mailto:deepakatsymbi@gmail.com"><span class="contact-icon">✉️</span> deepakatsymbi@gmail.com</a>
+      <a class="contact-item" href="https://linkedin.com/in/deepak-kaul-528b5b15" target="_blank"><span class="contact-icon">🔗</span> LinkedIn Profile</a>
+      <a class="contact-item"><span class="contact-icon">📍</span> Pune, India</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Deepak Koul · Supply Chain Transformation SME &amp; IT Business Partner
+</footer>
+
+</body>
+</html>
